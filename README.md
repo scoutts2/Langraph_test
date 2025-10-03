@@ -1,13 +1,14 @@
-# LangGraph Demo App
+# 🤖 Personal Assistant Agent
 
-A Next.js application demonstrating LangGraph workflows with a beautiful UI, deployed on Vercel.
+A Next.js application featuring a true AI agent built with LangGraph, deployed on Vercel.
 
 ## Features
 
-- **Multi-step Reasoning**: LangGraph workflow with three distinct steps:
-  1. **Analyze**: Breaks down user input
-  2. **Reason**: Develops step-by-step thinking
-  3. **Answer**: Provides comprehensive response
+- **True AI Agent**: Complete agent with planning, tools, and decision-making
+- **Multi-step Planning**: Breaks down complex tasks into actionable steps
+- **Tool Integration**: Research, decision-making, and validation tools
+- **Conversational Memory**: Maintains context across interactions
+- **Conditional Logic**: Asks for clarification when needed
 
 - **Modern UI**: Clean, responsive interface with Tailwind CSS
 - **Real-time Processing**: Live workflow execution with loading states
@@ -52,21 +53,28 @@ A Next.js application demonstrating LangGraph workflows with a beautiful UI, dep
    - Add environment variable: `OPENAI_API_KEY`
    - Deploy!
 
-## LangGraph Workflow
+## Agent Architecture
 
-The app demonstrates a simple but effective LangGraph workflow:
+The app demonstrates a true AI agent with advanced LangGraph capabilities:
 
 ```typescript
-// Three-step workflow
-Analyze Input → Generate Reasoning → Provide Answer
+// Agent workflow with conditional logic and tools
+Analyze Request → [Clarify if needed] → Create Plan → Execute Steps → Finalize Result
 ```
 
-Each step uses OpenAI's GPT model to process and enhance the information, creating a structured reasoning process that's transparent to the user.
+### Agent Components:
+
+1. **Planning Tool**: Breaks down complex tasks into steps
+2. **Research Tool**: Gathers information on any topic  
+3. **Decision Tool**: Helps with choices and recommendations
+4. **Validation Tool**: Checks if tasks are completed successfully
+5. **Memory System**: Maintains conversation context
+6. **Conditional Routing**: Asks for clarification when needed
 
 ## API Endpoints
 
-- `GET /api/workflow` - API status
-- `POST /api/workflow` - Run the LangGraph workflow
+- `GET /api/workflow` - Agent API status
+- `POST /api/workflow` - Run the Personal Assistant Agent with conversation history
 
 ## Technologies Used
 
@@ -86,19 +94,21 @@ Each step uses OpenAI's GPT model to process and enhance the information, creati
 │   ├── layout.tsx        # Root layout
 │   └── page.tsx          # Home page
 ├── components/
-│   └── WorkflowInterface.tsx  # Main UI component
+│   └── AgentInterface.tsx     # Agent conversation UI
 ├── lib/
-│   └── langgraph-workflow.ts  # LangGraph workflow logic
+│   └── agent-workflow.ts      # LangGraph agent implementation
 └── package.json
 ```
 
-## Getting Started with LangGraph
+## Getting Started with LangGraph Agents
 
-This app is a great introduction to LangGraph concepts:
+This app demonstrates advanced LangGraph agent concepts:
 
-1. **State Management**: How to define and manage workflow state
-2. **Node Functions**: Creating processing steps
-3. **Workflow Orchestration**: Connecting nodes with edges
-4. **Real-world Usage**: Integrating with web applications
+1. **State Management**: Complex state with multiple data types
+2. **Conditional Routing**: Dynamic decision-making based on context
+3. **Tool Integration**: Multiple specialized tools for different tasks
+4. **Conversational Memory**: Maintaining context across interactions
+5. **Planning & Execution**: Breaking down tasks and executing steps
+6. **Error Handling**: Graceful handling of edge cases
 
-Perfect for learning how to build more complex AI workflows!
+Perfect for learning how to build sophisticated AI agents that can plan, execute, and adapt!

@@ -1,29 +1,31 @@
 'use client';
 
 import { useState } from 'react';
-import WorkflowInterface from '@/components/WorkflowInterface';
+import AgentInterface from '@/components/AgentInterface';
 
 export default function Home() {
   return (
     <div className="max-w-4xl mx-auto">
       <header className="text-center mb-8">
         <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          LangGraph Demo App
+          🤖 Personal Assistant Agent
         </h1>
         <p className="text-lg text-gray-600 mb-2">
-          Experience multi-step reasoning with LangGraph workflows
+          Experience a true AI agent with planning, tools, and contextual memory
         </p>
-        <div className="bg-blue-100 border border-blue-300 rounded-lg p-4 mb-6">
-          <h3 className="font-semibold text-blue-800 mb-2">How it works:</h3>
-          <ol className="text-blue-700 text-sm space-y-1">
-            <li>1. <strong>Analyze:</strong> Breaks down your input</li>
-            <li>2. <strong>Reason:</strong> Develops step-by-step thinking</li>
-            <li>3. <strong>Answer:</strong> Provides a comprehensive response</li>
-          </ol>
+        <div className="bg-purple-100 border border-purple-300 rounded-lg p-4 mb-6">
+          <h3 className="font-semibold text-purple-800 mb-2">Agent Capabilities:</h3>
+          <ul className="text-purple-700 text-sm space-y-1">
+            <li>• <strong>Planning:</strong> Breaks down complex tasks into steps</li>
+            <li>• <strong>Research:</strong> Gathers information on any topic</li>
+            <li>• <strong>Decision Making:</strong> Helps you choose between options</li>
+            <li>• <strong>Memory:</strong> Remembers our conversation context</li>
+            <li>• <strong>Clarification:</strong> Asks questions when needed</li>
+          </ul>
         </div>
       </header>
       
-      <WorkflowInterface />
+      <AgentInterface />
       
       <footer className="text-center mt-12 text-gray-500 text-sm">
         <p>Built with Next.js, LangGraph, and OpenAI</p>

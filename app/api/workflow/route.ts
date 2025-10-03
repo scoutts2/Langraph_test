@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { runWorkflow } from '@/lib/langgraph-workflow';
+import { runAgent } from '@/lib/agent-workflow';
+import { HumanMessage, AIMessage } from '@langchain/core/messages';
 
 export async function POST(request: NextRequest) {
   try {
-    const { input } = await request.json();
+    const { input, conversationHistory } = await request.json();
     
     if (!input) {
       return NextResponse.json(
@@ -12,18 +13,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await runWorkflow(input);
+    // Convert conversation history to proper message format
+    const messages = conversationHistory?.map((msg: any) => {
+      if (msg.type === 'human') {
+        return new HumanMessage(msg.content);
+      } else {
+        return new AIMessage(msg.content);
+      }
+    }) || [];
+
+    const result = await runAgent(input, messages);
     
     return NextResponse.json({
       success: true,
       result: {
-        reasoning: result.reasoning,
-        finalAnswer: result.finalAnswer,
+        currentTask: result.currentTask,
+        plan: result.plan,
         currentStep: result.currentStep,
+        completedSteps: result.completedSteps,
+        needsClarification: result.needsClarification,
+        clarificationQuestion: result.clarificationQuestion,
+        finalResult: result.finalResult,
+        context: result.context,
       }
     });
   } catch (error) {
-    console.error('Workflow error:', error);
+    console.error('Agent error:', error);
     return NextResponse.json(
       { 
         error: 'Failed to process request',
@@ -36,9 +51,9 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   return NextResponse.json({
-    message: 'LangGraph Workflow API is running',
+    message: 'LangGraph Agent API is running',
     endpoints: {
-      POST: '/api/workflow - Run the LangGraph workflow with input'
+      POST: '/api/workflow - Run the Personal Assistant Agent with input and conversation history'
     }
   });
 }
